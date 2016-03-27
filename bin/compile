@@ -139,22 +139,22 @@ function main() {
     mkdir -p $DNX_GLOBAL_HOME
     
     # Checking cache and install or restore.
-    if [[ $USE_CACHE -ne 1 ]] || [[ ! -d $CACHE_DIR/dirs/.dnx ]] || [[ ! -d $CACHE_DIR/dirs/dnx ]];then
-        topic "Install dnvm."
-        cd $BUILD_DIR/
-        curl -sSL https://raw.githubusercontent.com/aspnet/Home/dev/dnvminstall.sh > dnvminstall.sh 
-        chmod +x dnvminstall.sh
-        ./dnvminstall.sh 2>&1 | indent
-        . "$DNX_USER_HOME/dnvm/dnvm.sh"
-        dnvm install latest -r coreclr -alias edge-coreclr -g 2>&1 | indent
-    else
-        topic "Restoring .dnx and dnx from cache..."
-        cp -ra $CACHE_DIR/dirs/.dnx $BUILD_DIR/ 2>&1 | indent
-        echo "Restored .dnx in $BUILD_DIR/.dnx" | indent
-        cp -ra $CACHE_DIR/dirs/dnx $BUILD_DIR/.apt/usr/local/lib/ 2>&1 | indent
-        echo "Restored dnx in $BUILD_DIR/.apt/usr/local/lib/dnx." | indent
-        . "$DNX_USER_HOME/dnvm/dnvm.sh"
-    fi
+    # if [[ $USE_CACHE -ne 1 ]] || [[ ! -d $CACHE_DIR/dirs/.dnx ]] || [[ ! -d $CACHE_DIR/dirs/dnx ]];then
+    #     topic "Install dnvm."
+    #     cd $BUILD_DIR/
+    #     curl -sSL https://raw.githubusercontent.com/aspnet/Home/dev/dnvminstall.sh > dnvminstall.sh 
+    #     chmod +x dnvminstall.sh
+    #     ./dnvminstall.sh 2>&1 | indent
+    #     . "$DNX_USER_HOME/dnvm/dnvm.sh"
+    #     dnvm install latest -r coreclr -alias edge-coreclr -g 2>&1 | indent
+    # else
+    #     topic "Restoring .dnx and dnx from cache..."
+    #     cp -ra $CACHE_DIR/dirs/.dnx $BUILD_DIR/ 2>&1 | indent
+    #     echo "Restored .dnx in $BUILD_DIR/.dnx" | indent
+    #     cp -ra $CACHE_DIR/dirs/dnx $BUILD_DIR/.apt/usr/local/lib/ 2>&1 | indent
+    #     echo "Restored dnx in $BUILD_DIR/.apt/usr/local/lib/dnx." | indent
+    #     . "$DNX_USER_HOME/dnvm/dnvm.sh"
+    # fi
     
     # Check if edge_js is in cache
     # if  [[ $USE_CACHE -ne 1 ]] || [[ ! -d $CACHE_DIR/dirs/edge ]]; then
